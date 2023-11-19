@@ -1,0 +1,44 @@
+#+title: SoMC Plugins and Datapacks
+#+author: Dylan Garvis
+#+date: <2023-11-18 Sat>
+
+* Datapacks
+- [[https://www.curseforge.com/minecraft/customization/custom-roleplay-data-datapack][Custom Role Play]] :: Used to allow custom props in the game.
+- [[https://modrinth.com/datapack/blazeandcaves-advancements-pack][BlazeandCaves's Advancements Pack]] :: Bring the base game to over 1000 adavancements and gives rewards.
+- [[https://vanillatweaks.net/picker/datapacks/][Vanilla Tweaks]] :: Many used to improve overall experience of the game
+  - Back to blocks
+  - Universal Dyeing
+  - Craftable Bundles (Leather)
+  - Armour Statues
+  - Unlock All Recipes
+  - AFK Display
+  - Durability Ping
+  - Player Head Drops (Needs to be at the top of the DL list or graves will break it)
+  - Double Shulker Shells
+  - More Mob Heads
+  - Silence Mobs
+  - Spectator Night Vision
+  - Spectator Conduit Power
+  - Wandering Trades
+  - Confetti Creepers
+  - Graves
+  - Spawn
+  - Timber
+  - Anti Enderman Grief
+
+* Plugins
+- [[https://www.spigotmc.org/resources/chestcleaner-sorting-plugin-api.40313/][Chest Cleaner]]
+- [[https://geysermc.org/download][GeyserMc]] (and floodgate)
+- [[[[https://www.spigotmc.org/resources/lootin-1-16-1-20-no-more-already-looted-chests.90453/][Lootin]]
+- [[https://luckperms.net/download][LuckPerms]]
+- [[https://modrinth.com/plugin/simple-voice-chat/versions#all-versions][SimpleVoiceChat]]
+
+Version Compatibility
+- [[https://www.spigotmc.org/resources/viabackwards.27448/][Backwards]]
+- [[https://www.spigotmc.org/resources/viaversion.19254/][ViaVersion]]
+
+Multiverse (Phasing out)
+- [[https://modrinth.com/plugin/multiverse-core][Core]]
+- [[https://modrinth.com/plugin/multiverse-inventories][Inventories]]
+- [[https://modrinth.com/plugin/multiverse-netherportals][Nether Portals]]
+- [[https://modrinth.com/plugin/multiverse-portals][Portals]]
