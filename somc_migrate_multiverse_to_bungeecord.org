@@ -247,10 +247,132 @@ The Simple portal plugin will be used to allow players to move between worlds.
    - repeat steps b and c
 
 * Adding a Lobby and Using it to Enforce Whitelist
-Create a small lobby server in a super flat / adventure mode / small border
-disable whitelist on both sub servers
-edit geyser to force login to teh lobby server first
-imgrate the old whitelist to this server
+Adding a lobb provides a couple of main benifits:
+- The whitelist can be enforced in on place across the network.
+- Players can change worlds by logging into the game instead of
+  having to travel back to spawn of their current world and then
+  using a portal to a new world. Allowing them to save their 
+  location per world.
+
+To this we are going to add a super flat, migrate the whitelist, and force
+entry to the lobby server.
+
+1. Open *docker-compose.yml* file.
+  #+begin_src sh
+  emacs docker-compose.yml
+  #+end_src
+2. Under the *volumes* section craete a new volume for the lobby
+  #+begin_src yaml
+volumes:
+  somc-lobby:
+  [...]
+  #+end_src
+3. Under the *serviecs* section add the lobby server.
+  #+begin_src yaml
+services: 
+  somc-lobby:
+    image: itzg/minecraft-server
+    restart: always
+    volumes:
+      - "somc-lobby:/data"
+    environment:
+      EULA: "TRUE"
+      
+      TYPE: "SPIGOT"
+      VERSION: "1.20.1"
+
+      MEMORY: 3G
+      VIEW_DISTANCE: 10
+      MAX_PLAYERS: 50
+
+      WHITELIST: "WindMagi"
+      OPS: "WindMagi"
+
+      MODE: "adventure"
+      DIFFICULTY: "peaceful"
+      MAX_WORLD_SIZE: 500
+      ALLOW_NETHER: "FALSE"
+      FORCE_GAMEMODE: "TRUE"
+      GENERATE_STRUCTURES: "FALSE"
+      SPAWN_ANIMALS: "FALSE"
+      SPAWN_MONSTERS: "FALSE"
+      SPAWN_NPCS: "FALSE"
+
+      LEVEL_TYPE: FLAT
+      
+      ONLINE_MODE: "FALSE"
+
+      MOTD: "SoMC: Social and Minecraft"
+      ANNOUNCE_PLAYER_ACHIEVEMENTS: "FALSE"
+      SNOOPER_ENABLED: "FALSE"
+
+      LEVEL: world
+  #+end_src
+4. Create symbolic link to to make accessing the data directory easier.
+  #+begin_src sh
+  ln -s /var/lib/docker/volumes/minecraft_somc-lobby/_data/ somc-lobby
+  #+end_src
+5. Start the new lobby server
+  #+begin-src sh
+  docker-compose up -d
+  #+end_src
+5. In *somc-lobby/spigot.yml* set *bungeecord* to *true*.
+6. In *somc-lobby/bukkit.yml* set *connection-throttle* to *-1*
+7. In *somc-proxy/confgi.yml*, add the new server under the *servers* section
+  #+begin_src yaml
+servers:
+lobby:
+motd: Lobby
+address: somc-lobby:25565
+restricted: false
+  #+end_src
+8. In *somc-proxy/confgi.yml*, *force_default_server* and set it to *true*
+9. In *somc-proxy/confgi.yml*, under *priorities* remove all entries and make it look like:
+  #+begin_src yaml
+  priorities:
+  - lobby
+  #+end_src
+10. Copy the whitelist from the orginal data directory
+  #+begin_src sh
+  cp data/whitelist.josn somc-lobby/
+  #+end_src
+11. Install the Plugins Simple Portals, ViaVersion, ViaBackwards, LuckPerms
+  #+begin_src sh
+  cp SimplePortals-*.jar somc-lobby/plugins/
+  cp data/plugins/Via*.jar somc-lobby/plugins/
+  cp data/plugins/LuckPerms*.jar somc-lobby/plugins/
+  #+end_src
+11. Restart the lobby and the proxy
+  #+begin_src sh
+  docker-compose restart somc-lobby somc-proxy
+  #+end_src
+12. Login into the game and make sure you are in the lobby world
+13. Adjust some gamerulse
+  - doDaylightCycle false
+  - doWeatherCycle false
+13. Make the portals to connect each world
+   - Create a portal frame
+   - Place dirt within portal frame at clickable locations
+   - Run the command ~/portals sm~
+   - Right-click position one and left-click position two of the portal
+   - Create the portal with ~/portals create to_worl1~ (adjust name as needed)
+   - Link the portals ~/portals ss to_world1 world1~ (adjust as needed)
+14. Update permissions to allow players to use the portals.
+   - Open the luck perms editor ~/luckperms editor~ and click link
+   - Under the default group add *=simpleportals.portal.*=* as **true**
+15. In the *docker-compose.yml* remove the whitelist value under somc-world1 and somc-world2.
+16. Remove the whitelist files
+  #+begin_src sh
+  rm somc-world1/whitelist.json
+  rm somc-world2/whitelist.json
+  #+end_src
+17. Edit the *server.properties* for each world and set:
+  - white-list = false
+  - enforce-whitelist = false
+17. Restart the world servers
+  #+begin_src sh
+  docker-compose up -d
+  #+end_src
 
 * Enabling Backups
 
