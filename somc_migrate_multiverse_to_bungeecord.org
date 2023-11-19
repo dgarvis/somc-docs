@@ -510,3 +510,13 @@ services:
   #+begin_src sh
   docker-compose restart prometheus
   #+end_src
+* Wrapping Up
+A few last things need to be adjusted
+- The SoMC Manager Bot needs to now point to the lobby server for rcon
+  requests so that it can control the whitelist.
+- After users have logged into both worlds, this will have corrected their
+  inventories and the multiverse core and inventories plugins can be removed.
+- When a user logins again, they need to touch a bed in each world or they
+  will spawn at the world center of where ever they die. (problem with multiversue)
+- The metrics reporting api that powers the website will need to have it's 
+  queries updated to pull metrics from the new server instances.
