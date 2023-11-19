@@ -445,4 +445,68 @@ services:
 
 * Enabling Metric Reporting
 
-todo
+Metric reporting works by having a prometheus exportor for each instance, and
+then feeding that into Grafana for visuals.
+
+1. Open the *docker-compose.yml* file.
+2. Remove the old exporter called *somc-exporter* under services.
+3. Add new exporters under the services for each instance.
+  #+begin_src yaml
+services:
+  somc-lobby-exporter:
+    image: dmgarvis/minecraft_exporter
+    restart: always
+    environment:
+      RCON_HOST: "somc-lobby"
+      RCON_PASSWORD: "omitted"
+      RCON_PORT: 25575
+    volumes:
+      - /var/lib/docker/volumes/minecraft_somc-lobby/_data/world:/world:ro
+      - /var/lib/docker/volumes/minecraft_somc-lobby/_data/usercache.json:/usercache.json:ro
+    depends_on:
+      - somc-lobby
+  somc-world1-exporter:
+    image: dmgarvis/minecraft_exporter
+    restart: always
+    environment:
+      RCON_HOST: "somc-world1"
+      RCON_PASSWORD: "omitted"
+      RCON_PORT: 25575
+    volumes:
+      - /var/lib/docker/volumes/minecraft_somc-world1/_data/world:/world:ro
+      - /var/lib/docker/volumes/minecraft_somc-world1/_data/usercache.json:/usercache.json:ro
+    depends_on:
+      - somc-world1
+  somc-world2--exporter:
+    image: dmgarvis/minecraft_exporter
+    restart: always
+    environment:
+      RCON_HOST: "somc-world2"
+      RCON_PASSWORD: "omitted"
+      RCON_PORT: 25575
+    volumes:
+      - /var/lib/docker/volumes/minecraft_somc-world2/_data/world:/world:ro
+      - /var/lib/docker/volumes/minecraft_somc-world2/_data/usercache.json:/usercache.json:ro
+    depends_on:
+      - somc-world2
+  #+end_src
+4. Save and close the docker-compose file.
+5. Open the *prometheus.yml* file.
+6. Remove the taregt for *somc-exporter*.
+7. Add new exporter targets
+  #+begin_src yaml
+  - targets:
+    - somc-lobby-exporter:8000
+  - targets:
+    - somc-world1-exporter:8000
+  - targets:
+    - somc-world2-exporter:8000
+  #+end_src
+8. Start the new exporter instances
+  #+begin_src sh
+  docker-compose up -d
+  #+end_src
+9. Restart the prometheus instance
+  #+begin_src sh
+  docker-compose restart prometheus
+  #+end_src
