@@ -26,8 +26,8 @@ This process could be destructive. Make sure the server
 has been shutdown and a complete backup created.
 
 ** Update the Docker Compose
-1. Comment out the existing ~somc~, ~somc-backup~, ~somc-exporter~ under the **services**.
-2. In the **docker-compose.yml** file, add three new **volumes**
+1. Comment out the existing ~somc~, ~somc-backup~, ~somc-exporter~ under the *services*.
+2. In the *docker-compose.yml* file, add three new *volumes*
   #+begin_src yaml
 volumes:
   somc-proxy:
@@ -35,7 +35,7 @@ volumes:
   somc-world2:
   [...]
   #+end_src
-3. In the **docker-compose.yml**, under **services** add the proxy, and the two new world servers.
+3. In the *docker-compose.yml*, under *services* add the proxy, and the two new world servers.
   #+begin_src yaml
 services:
   somc-proxy:
@@ -132,7 +132,7 @@ services:
   #+begin_src sh
   emacs somc-proxy/config.yml
   #+end_src 
-3. Under the **servers** section remove the default **lobby**.
+3. Under the *servers* section remove the default *lobby*.
 4. Add the two new servers
   #+begin_src yaml
 servers:
@@ -145,20 +145,20 @@ servers:
     address: somc-world2:25565
     restricted: false
   #+end_src
-5. Under the **priorities** section remove **lobby**.
-6. Under the **priorities** add our two new servers.
+5. Under the *priorities* section remove *lobby*.
+6. Under the *priorities* add our two new servers.
   #+begin_src yaml
   priorities:
   - world1
   - world2
   #+end_src
 7. Set the motd to =SoMC: Social Minecraft=
-8. Set **=ip_forward=** to **true**
+8. Set *=ip_forward=* to *true*
 9. Save and exit the config file
 
 ** Configure BungeeCord to support Bedrock Players
-1. Download **Floodgate** and **Geyser** for BungeeCord from [[https://geysermc.org/download#bungeecord][here]].
-2. Copy both jar files into **somc-proxy/plugins**
+1. Download *Floodgate* and *Geyser* for BungeeCord from [[https://geysermc.org/download#bungeecord][here]].
+2. Copy both jar files into *somc-proxy/plugins*
 
 ** Setup World 1
 1. Copy all the data (it is easier to delete, what we don't need)
@@ -180,9 +180,9 @@ servers:
   rm -rf somc-world1/plugins/Multiverse-Portals
   rm     somc-world1/plugins/multiverse-portals*.jar
   #+end_src
-4. In **server.properties** set **online-mode** to **false**.
-5. In **spigot.yml** set **bungeecord** to **true**.
-6. In **bukkit.yml** set **connection-throttle** to **-1**
+4. In *server.properties* set *online-mode* to *false*.
+5. In *spigot.yml* set *bungeecord* to *true*.
+6. In *bukkit.yml* set *connection-throttle* to *-1*
 
 ** Setup world 2
 1. Copy all the data (it is easier to delete, what we don't need)
@@ -210,10 +210,10 @@ servers:
   rm -rf somc-world2/plugins/Multiverse-Portals
   rm     somc-world2/plugins/multiverse-portals*.jar
   #+end_src
-5. In **server.properties** set **online-mode** to **false**.
-6. In **spigot.yml** set **bungeecord** to **true**.
-7. In **bukkit.yml** set **connection-throttle** to **-1**
-8. In **server.properties** also change:
+5. In *server.properties* set *online-mode* to *false*.
+6. In *spigot.yml* set *bungeecord* to *true*.
+7. In *bukkit.yml* set *connection-throttle* to *-1*
+8. In *server.properties* also change:
    - level-seed=-2464856654681432429
    - level-name=Test
 
@@ -242,7 +242,7 @@ The Simple portal plugin will be used to allow players to move between worlds.
 4. Update permissions to allow players to use the portals.
    - Switch to world 1 with ~/server world1~
    - Open the luck perms editor ~/luckperms editor~ and click link
-   - Under the default group add **simpleportals.use** as **true**
+   - Under the default group add *simpleportals.portals.* * as *true*
    - Switch to world 2 with ~/server world2~
    - repeat steps b and c
 
@@ -359,7 +359,7 @@ restricted: false
    - Link the portals ~/portals ss to_world1 world1~ (adjust as needed)
 14. Update permissions to allow players to use the portals.
    - Open the luck perms editor ~/luckperms editor~ and click link
-   - Under the default group add *=simpleportals.portal.*=* as **true**
+   - Under the default group add *=simpleportals.portal.*=* as *true*
 15. In the *docker-compose.yml* remove the whitelist value under somc-world1 and somc-world2.
 16. Remove the whitelist files
   #+begin_src sh
