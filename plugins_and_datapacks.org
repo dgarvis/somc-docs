@@ -31,7 +31,7 @@
 - [[https://geysermc.org/download][GeyserMc]] (and floodgate)
 - [[https://www.spigotmc.org/resources/lootin-1-16-1-20-no-more-already-looted-chests.90453/][Lootin]]
 - [[https://luckperms.net/download][LuckPerms]]
-- [[https://modrinth.com/plugin/simple-voice-chat/versions#all-versions][SimpleVoiceChat]]
+- [[https://modrinth.com/plugin/simple-voice-chat/versions#all-versions][SimpleVoiceChat]] (Currently testing out)
 
 Version Compatibility
 - [[https://www.spigotmc.org/resources/viabackwards.27448/][Backwards]]
