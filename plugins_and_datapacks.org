@@ -29,7 +29,7 @@
 * Plugins
 - [[https://www.spigotmc.org/resources/chestcleaner-sorting-plugin-api.40313/][Chest Cleaner]]
 - [[https://geysermc.org/download][GeyserMc]] (and floodgate)
-- [[[[https://www.spigotmc.org/resources/lootin-1-16-1-20-no-more-already-looted-chests.90453/][Lootin]]
+- [[https://www.spigotmc.org/resources/lootin-1-16-1-20-no-more-already-looted-chests.90453/][Lootin]]
 - [[https://luckperms.net/download][LuckPerms]]
 - [[https://modrinth.com/plugin/simple-voice-chat/versions#all-versions][SimpleVoiceChat]]
 
