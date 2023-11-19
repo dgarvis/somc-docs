@@ -1,0 +1,37 @@
+#+title: Prune Minecraft World
+#+author: Dylan Garvis
+#+date: <2023-09-07 Thu>
+
+* Overview
+This document goes over how to remove chunks in a Minecraft world to keep
+the world size down and allow for new chunks to generate after updates.
+
+**Make sure to backup a world first**
+
+* Downloading and Running MCA Selector
+1. From [[https://github.com/Querz/mcaselector]] download the *Universal* version.
+2. From [[https://github.com/Querz/mcaselector/wiki/Installation]] download the
+   version of Java with the FX fix.
+3. Open a command line and extract the version of java.
+4. Launch MCA select, command will look something like:
+   ~~/install/zulu17.34.19-ca-fx-jre17.0.3-macosx_aarch64/bin/java -jar mcaselector-2.2.2.jar~
+   
+* Pruning the World
+Ensure the world is not in use first.
+** Over world
+1. Open the over world in MCA select. *File -> Open World*
+2. Select chunks to delete.
+   1. *Tools -> Filter Chunks*
+   2. Input ~InhabitedTime < "5 minutes"~ into the filter bar and select enter.
+   3. Press "OK"
+3. Delete the chunks by using *Selection -> Delete selected chunks*. 
+** The Nether
+Follow the same steps as the over world.
+** The End
+1. Open the over world in MCA select. *File -> Open World*
+2. Select chunks to delete.
+   1. *Tools -> Filter Chunks*
+   2. Input ~xPos <= 100 AND xPos >= -100 AND zPos <= 100 AND zPos >= -100~ into the filter bar and select enter.
+   3. Press "OK"
+   4. Invert the chunks. *Selection -> Invert*
+3. Delete the chunks by using *Selection -> Delete selected chunks*. 
