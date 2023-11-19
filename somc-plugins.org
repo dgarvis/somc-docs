@@ -16,8 +16,6 @@ Multiverse
 - [[https://modrinth.com/plugin/multiverse-netherportals][Nether Portals]]
 - [[https://modrinth.com/plugin/multiverse-portals][Portals]]
 
-Version
-
 Version Compatibility
 - [[https://www.spigotmc.org/resources/viabackwards.27448/][Backwards]]
 - [[https://www.spigotmc.org/resources/viaversion.19254/][ViaVersion]]
