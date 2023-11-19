@@ -1,0 +1,23 @@
+#+title: SoMC Plugins
+#+author: Dylan Garvis
+#+date: <2023-11-18 Sat>
+
+Below is a list of Plugins used by the SoMC Servers.
+
+[[https://www.spigotmc.org/resources/chestcleaner-sorting-plugin-api.40313/][Chest Cleaner]]
+[[https://geysermc.org/download][GeyserMc]]
+[[https://www.spigotmc.org/resources/lootin-1-16-1-20-no-more-already-looted-chests.90453/][Lootin]]
+[[https://luckperms.net/download][LuckPerms]]
+[[https://modrinth.com/plugin/simple-voice-chat/versions#all-versions][SimpleVoiceChat]]
+
+Multiverse
+- [[https://modrinth.com/plugin/multiverse-core][Core]]
+- [[https://modrinth.com/plugin/multiverse-inventories][Inventories]]
+- [[https://modrinth.com/plugin/multiverse-netherportals][Nether Portals]]
+- [[https://modrinth.com/plugin/multiverse-portals][Portals]]
+
+Version
+
+Version Compatibility
+- [[https://www.spigotmc.org/resources/viabackwards.27448/][Backwards]]
+- [[https://www.spigotmc.org/resources/viaversion.19254/][ViaVersion]]
