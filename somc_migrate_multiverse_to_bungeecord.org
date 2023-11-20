@@ -318,7 +318,7 @@ services:
   #+end_src
 5. In *somc-lobby/spigot.yml* set *bungeecord* to *true*.
 6. In *somc-lobby/bukkit.yml* set *connection-throttle* to *-1*
-7. In *somc-proxy/confgi.yml*, add the new server under the *servers* section
+7. In *somc-proxy/config.yml*, add the new server under the *servers* section
   #+begin_src yaml
 servers:
 lobby:
@@ -326,8 +326,8 @@ motd: Lobby
 address: somc-lobby:25565
 restricted: false
   #+end_src
-8. In *somc-proxy/confgi.yml*, *force_default_server* and set it to *true*
-9. In *somc-proxy/confgi.yml*, under *priorities* remove all entries and make it look like:
+8. In *somc-proxy/config.yml*, *force_default_server* and set it to *true*
+9. In *somc-proxy/config.yml*, under *priorities* remove all entries and make it look like:
   #+begin_src yaml
   priorities:
   - lobby
